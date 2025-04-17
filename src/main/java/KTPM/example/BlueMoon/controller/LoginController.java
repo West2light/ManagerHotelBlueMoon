@@ -1,6 +1,6 @@
 package KTPM.example.BlueMoon.controller;
 
-import KTPM.example.BlueMoon.service.AccountService;
+import KTPM.example.BlueMoon.service.userService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +13,10 @@ import static KTPM.example.BlueMoon.config.GenToken.generateToken;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-//@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class LoginController {
 
-    private final AccountService accountService;
+    private final userService accountService;
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> request) {
