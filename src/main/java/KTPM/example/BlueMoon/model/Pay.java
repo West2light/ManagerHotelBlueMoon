@@ -18,13 +18,14 @@ public class Pay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne
-    @JoinColumn(name = "nhankhau_id")
-    private nhankhau nhankhau;
 
     @ManyToOne
-    @JoinColumn(name = "khoanthu_id")
-    private khoanthu khoanthu;
+    @JoinColumn(name = "khoanthuid")
+    private Khoanthu khoanthu;
+
+    @ManyToOne
+    @JoinColumn(name = "nhankhauid")
+    private Nhankhau nhankhau;
 
     private Date ngaythu;
     private Float tien;

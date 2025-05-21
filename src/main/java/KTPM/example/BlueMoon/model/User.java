@@ -16,10 +16,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String username;
     private String password;
+
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "roleid")
     private Role role;
+
     private boolean enabled;
 }

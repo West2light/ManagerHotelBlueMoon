@@ -36,7 +36,7 @@ public class userService implements Iuser {
     @Override
     public boolean register(String username, String password, int roleid) {
         if(username != null && password != null && roleid != 0) {
-            Role role = roleRepository.findById(roleid);
+            Role role = roleRepository.findByRoleid(roleid);
             User user = User.builder()
                     .username(username)
                     .password(password)
