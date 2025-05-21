@@ -15,31 +15,34 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-public class nhankhau {
+public class Nhankhau {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    private String name;
-    private Date birthday;
-    private boolean gender;
-    private String nation;
-    private String religion;
+    private int nhankhauid;
+    private String hoten;
+    private Date ngaysinh;
+    private boolean gioitinh;
+    private String dantoc;
+    private String tongiao;
     private String cccd;
-    private Date date_of_issue;
-    private String place_of_issue;
-    private String job;
-    private String note;
+    private Date ngaycap;
+    private String noicap;
+    private String nghenghiep;
+    private String ghichu;
+
+    @ManyToOne
+    @JoinColumn(name = "hokhauid")
+    private Hokhau hokhau;
 
     @OneToMany(mappedBy = "nhankhau")
-    private List<tamtrutamvang> temporarilyAbsents;
+    private List<Tamtrutamvang> temporarilyAbsents;
 
     @OneToMany(mappedBy = "nhankhau")
-    private List<Member> members;
-
-    @OneToMany(mappedBy = "nhankhau")
-    private List<hokhau> hokhaus;
+    private List<Lichsuthaydoi> members;
 
     @OneToMany(mappedBy = "nhankhau")
     private List<Pay> pays;
+
+
+
 }

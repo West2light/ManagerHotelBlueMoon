@@ -7,24 +7,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "khoanthu")
 @Data
+@Table(name = "lichsuthaydoihokhau")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class khoanthu {
+public class Lichsuthaydoi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Date ngaytao;
-    private Date thoihan;
-    private String tenkhoanthu;
-    private int tinhchat;
-    private String note;
 
-    @OneToMany(mappedBy = "khoanthu")
-    private List<Pay> pays;
+    @ManyToOne
+    @JoinColumn(name = "hokhauid")
+    private Hokhau hokhau;
+
+    @ManyToOne
+    @JoinColumn(name = "nhankhauid")
+    private Nhankhau nhankhau;
+
+    private Date thoigian;
+    private int loaithaydoi;
 }

@@ -14,16 +14,16 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "tamtrutamvang")
 @Builder
-public class tamtrutamvang {
+public class Tamtrutamvang {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
-    @JoinColumn(name = "nhankhau_id")
-    private nhankhau nhankhau;
+    @JoinColumn(name = "nhankhauid")
+    private Nhankhau nhankhau;
 
-    private String status;
-    private String address;
-    private Date date;
-    private String content;
+    private String trangthai;
+    private String diachitamtrutamvang;
+    private Date thoigian;
+    private String noidungdenghi;
 }

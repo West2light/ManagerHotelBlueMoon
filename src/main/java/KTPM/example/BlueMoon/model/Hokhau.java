@@ -15,21 +15,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class hokhau {
+public class Hokhau {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int hokhauid;
     private int sothanhvien;
     private String sonha;
     private String duong;
     private String phuong;
     private String quan;
-    private Date ngaycap;
+    private Date ngaylamhokhau;
+    private Date ngaythemnhankhau;
+    private String quanhevoichuho;
 
     @OneToMany(mappedBy = "hokhau")
-    private List<Member> members;
+    private List<Lichsuthaydoi> members;
 
-    @ManyToOne
-    @JoinColumn(name = "chuho_id")
-    private nhankhau nhankhau;
+    @OneToMany(mappedBy = "hokhau")
+    private List<Nhankhau> nhankhaus;
+
 }
