@@ -65,10 +65,10 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> changePassword(@RequestBody Map<String, String> request) {
         Map<String, Object> response = new HashMap<>();
         try {
-            String username = request.get("username");
+            int userid = Integer.parseInt(request.get("userid"));
             String password = request.get("password");
 
-            if (userService.changePassword(username, password)) {
+            if (userService.changePassword(userid, password)) {
                 response.put("status", "success");
                 return ResponseEntity.ok(response);
             } else {

@@ -50,8 +50,8 @@ public class userService implements Iuser {
     }
 
     @Override
-    public boolean changePassword(String username, String password) {
-        User user = userRepository.findByUsername(username);
+    public boolean changePassword(int userid, String password) {
+        User user = userRepository.findById(userid);
         if(user != null) {
             user.setPassword(password);
             userRepository.save(user);

@@ -8,7 +8,7 @@ public interface Iuser {
 
     boolean register(String username, String password, int roleid);
 
-    boolean changePassword(String username, String password);
+    boolean changePassword(int userid, String password);
 
     boolean deleteUser(String username);
 
