@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* SIDEBAR STYLES - BEGIN */
+/* Chỉ áp dụng màu đen cho sidebar, không ảnh hưởng đến các phần khác */
+.sidebar,
+.sidebar *,
+.sidebar nav,
+.sidebar nav *,
+.sidebar li a,
+.sidebar .menu-item,
+.sidebar ul li a,
+.sidebar ul li button {
+  color: black !important;
+  text-decoration-color: black !important;
+}
+
+/* Force black icons chỉ trong sidebar */
+.sidebar svg,
+.sidebar nav svg,
+.sidebar li a svg,
+.sidebar .menu-item svg,
+.sidebar ul li a svg,
+.sidebar ul li button svg {
+  color: black !important;
+  fill: none !important;
+  stroke: black !important;
+}
+
+/* Make sure SVG paths trong sidebar vẫn đen */
+.sidebar svg path,
+.sidebar nav svg path,
+.sidebar li a svg path,
+.sidebar .menu-item svg path,
+.sidebar ul li a svg path,
+.sidebar ul li button svg path {
+  color: black !important;
+  stroke: black !important;
+}
+
+/* SIDEBAR STYLES - END */
+
+/* CALENDAR STYLES - BEGIN */
+/* Cải thiện giao diện lịch */
+.rbc-calendar {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.rbc-toolbar {
+  padding: 10px;
+  background-color: #f9fafb;
+}
+
+.rbc-toolbar button {
+  border-radius: 4px;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Màu cho tiêu đề lịch và các nút */
+.rbc-toolbar-label {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #1f2937;
+}
+
+/* Màu cho sự kiện lịch tập */
+.rbc-event {
+  background-color: #3b82f6 !important;
+  /* blue-500 */
+  border-color: #2563eb !important;
+  /* blue-600 */
+  color: white !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+  padding: 4px 8px !important;
+}
+
+.rbc-event-label {
+  font-weight: bold !important;
+}
+
+.rbc-event-content {
+  font-size: 0.9rem !important;
+}
+
+.rbc-event.rbc-selected {
+  background-color: #1d4ed8 !important;
+  /* blue-700 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.rbc-day-slot .rbc-event {
+  border-left: 5px solid #2563eb !important;
+  /* blue-600 */
+}
+
+/* Thêm màu cho header của lịch */
+.rbc-month-header {
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.rbc-header {
+  padding: 8px 0;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+/* Màu sắc cho từng loại buổi tập */
+.event-cardio {
+  background-color: #ef4444 !important;
+  /* red-500 */
+  border-color: #dc2626 !important;
+  /* red-600 */
+}
+
+.event-gym {
+  background-color: #3b82f6 !important;
+  /* blue-500 */
+  border-color: #2563eb !important;
+  /* blue-600 */
+}
+
+.event-yoga {
+  background-color: #22c55e !important;
+  /* green-500 */
+  border-color: #16a34a !important;
+  /* green-600 */
+}
+
+.event-pilates {
+  background-color: #a855f7 !important;
+  /* purple-500 */
+  border-color: #9333ea !important;
+  /* purple-600 */
+}
+
+.event-crossfit {
+  background-color: #f97316 !important;
+  /* orange-500 */
+  border-color: #ea580c !important;
+  /* orange-600 */
+}
+
+/* CALENDAR STYLES - END */

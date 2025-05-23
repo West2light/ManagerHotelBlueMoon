@@ -1,0 +1,53 @@
+Usecase Khách hàng
+
+Name	Mô tả Note																							
+UC01	Xem thông tin các gói tập																								
+UC02	Đăng ký gói tập, điền thông tin																								
+UC03	Khách hàng đăng nhập tài khoản được cấp																								
+UC04	Xem thông tin cá nhân																								
+UC05	Chỉnh sửa thông tin cá nhân (maybe sẽ không có vì tài khoản do Manager cấp duyệt)																								
+UC06	Gia hạn gói tập																								
+UC07	Theo dõi thời hạn, thông tin gói tập hiện tại																								
+UC08	Theo dõi lịch sử tập luyện cùng PT (nếu có) (Lịch tập dạng giống Schooler)																								
+UC09	Xem thông tin thanh toán các gói tập	Trong quy trình thanh toán của Khách hàng, Khách sau khi đăng ký gói tập sẽ đến trực tiếp ký hợp đồng tập luyện cùng Manager sau đó thanh toán ở đó NÊN Manager sẽ lưu thông tin thanh toán cho Khách hàng và Khách hàng chỉ việc xem trạng thái thanh toán gói tập và lịch sử thanh toán các gói tập của mình																							
+UC10	Tạo Review																								
+UC11	Xem các Review																								
+																																																		
+Usecase PT - Trainer 
+
+Name	Mô tả 	Note																							
+UC01	Đăng nhập tài khoản được cấp	PT-Trainer không thể tự thêm khách hàng cho mình được (việc của Manager) chỉ có thể XEM và THÊM lịch tập với Khách. 																							
+UC02	Xem lịch tập với Khách																								
+UC03	Thêm lịch tập cho khách																								
+UC04	Chỉnh sửa lịch tập với khách																								
+UC05	Điểm danh khách hàng tham gia buổi tập																								
+UC06	Xem danh sách thông tin Khách hàng (của mình)	
+
+Usecase Manager 
+
+Name	Mô tả 	Note																							
+UC01	Đăng nhập tài khoản được cấp																								
+UC02	Duyệt đăng ký OR gia hạn gói tập cho Khách hàng																								
+UC03	Tạo tài khoản cho Khách hàng																								
+UC04	Thêm thông tin thanh toán của Khách																								
+UC05	Xem thông tin Khách hàng	gồm luôn thông tin thanh toán																							
+UC06	Thêm Khách hàng vào quan hệ với PT																								
+UC07	Chỉnh sửa quan hệ Khách hàng và PT																								
+UC08	Xem danh sách dụng cụ, thiết bị tập luyện trong phòng tập																								
+UC09	Thêm, xóa dụng cụ, thiết bị tập																								
+UC10	Chỉnh sửa trạng thái dụng cụ, thiết bị tập																								
+UC11	Xem Review của Khách hàng																								
+UC12	Xem lịch tập của Khách với PT, lịch dạy của các Trainer																								
+UC13	Thêm lịch tập cho Khách với PT																								
+UC14	Chỉnh sửa lịch tập của Khách với PT																								
+																									
+Usecase Admin 
+
+Name	Mô tả 	Note																							
+UC01	Tạo các tài khoản cho tất cả các Role còn lại																								
+UC02	Xem doanh thu theo đơn vị Tháng, Năm																								
+UC03	Xem danh sách hội viên 																								
+UC04	Xem danh sách Manager																								
+UC05	Xem dánh sách PT-Trainer																								
+UC06	Xem danh sách dụng cụ, thiết bị tập 																								
+UC07	Xem Review Khách hàng																								
