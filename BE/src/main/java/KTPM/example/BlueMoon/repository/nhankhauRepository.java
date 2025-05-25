@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface nhankhauRepository extends JpaRepository<Nhankhau, Integer> {
+    List<Nhankhau> findByHokhau_Hokhauid(int hokhauId);
+
 
 }

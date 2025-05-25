@@ -25,8 +25,10 @@ public class Hokhau {
     private String phuong;
     private String quan;
     private Date ngaylamhokhau;
-    private Date ngaythemnhankhau;
-    private String quanhevoichuho;
+    private String tenchuho;
+    private int xemay;
+    private int oto;
+    private Double dientich;
 
     @OneToMany(mappedBy = "hokhau")
     private List<Lichsuthaydoi> members;
