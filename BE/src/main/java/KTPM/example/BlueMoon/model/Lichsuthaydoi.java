@@ -29,4 +29,5 @@ public class Lichsuthaydoi {
 
     private Date thoigian;
     private int loaithaydoi;
+    private String quanhevoichuho;
 }
