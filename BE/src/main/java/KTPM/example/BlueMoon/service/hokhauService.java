@@ -24,26 +24,34 @@ public class hokhauService implements Ihokhau {
 
     @Override
     public Map<String, Object> gethokhau(int hokhau_id) {
-        Hokhau hokhau = hokhauRepository.findByHokhauid(hokhau_id);
-        List<Nhankhau> listnhankhau = nhankhauRepository.findByHokhau_Hokhauid(hokhau_id);
-        if (hokhau != null) {
-            Map<String, Object> newhokhau = new HashMap<>();
-            newhokhau.put("hokhauid", hokhau.getHokhauid());
-            newhokhau.put("sothanhvien", hokhau.getSothanhvien());
-            newhokhau.put("sonha", hokhau.getSonha());
-            newhokhau.put("ngaylamhokhau", hokhau.getNgaylamhokhau());
-            newhokhau.put("tenchuho", hokhau.getTenchuho());
-            newhokhau.put("xemay", hokhau.getXemay());
-            newhokhau.put("oto", hokhau.getOto());
-            newhokhau.put("dientich", hokhau.getDientich());
-            return newhokhau;
+        try {
+            Hokhau hokhau = hokhauRepository.findByHokhauid(hokhau_id);
+            if (hokhau != null) {
+                Map<String, Object> newhokhau = new HashMap<>();
+                newhokhau.put("hokhauid", hokhau.getHokhauid());
+                newhokhau.put("sothanhvien", hokhau.getSothanhvien());
+                newhokhau.put("sonha", hokhau.getSonha());
+                newhokhau.put("ngaylamhokhau", hokhau.getNgaylamhokhau());
+                newhokhau.put("tenchuho", hokhau.getTenchuho());
+                newhokhau.put("xemay", hokhau.getXemay());
+                newhokhau.put("oto", hokhau.getOto());
+                newhokhau.put("dientich", hokhau.getDientich());
+                return newhokhau;
+            } else {
+                throw new RuntimeException("Hokhau không tìm thấy với ID: " + hokhau_id);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Ghi log lỗi
+            throw new RuntimeException("Lỗi khi lấy hokhau: " + e.getMessage());
         }
-        return null; // Trả về null nếu không tìm thấy hộ khẩu
     }
 
     @Override
     public List<Map<String, Object>> getListhokhau(){
         List<Hokhau> hokhaus= hokhauRepository.findAll();
+        if ( hokhaus == null ){
+            return null;
+        }
         List<Map<String, Object>> listhokhau = new ArrayList<>();
         for (Hokhau hokhau : hokhaus) {
             Map<String, Object> lshokhau = new HashMap<>();
