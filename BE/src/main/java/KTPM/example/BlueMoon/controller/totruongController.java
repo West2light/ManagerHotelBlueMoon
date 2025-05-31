@@ -1,9 +1,7 @@
 package KTPM.example.BlueMoon.controller;
 
 import KTPM.example.BlueMoon.service.hokhauService;
-import KTPM.example.BlueMoon.service.khoanthuService;
 import KTPM.example.BlueMoon.service.nhankhauService;
-import KTPM.example.BlueMoon.service.payService;
 import KTPM.example.BlueMoon.service.tamtrutamvangService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.sql.Date;
 
 @RestController
 @RequestMapping("/totruong")
@@ -32,7 +31,7 @@ public class totruongController {
             String quan = request.get("quan");
             String ngaylamhokhauStr = request.get("ngaylamhokhau");  // ví dụ: "2024-05-22"
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            Date ngaylamhokhau = sdf.parse(ngaylamhokhauStr);
+            Date ngaylamhokhau = (Date) sdf.parse(ngaylamhokhauStr);
             String tenchuho = request.get("tenchuho");
             int xemay = Integer.parseInt(request.get("xemay"));
             int oto = Integer.parseInt(request.get("oto"));
@@ -63,7 +62,7 @@ public class totruongController {
             String quan = request.get("quan");
             String ngaylamhokhauStr = request.get("ngaylamhokhau");  // ví dụ: "2024-05-22"
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            Date ngaylamhokhau = sdf.parse(ngaylamhokhauStr);
+            Date ngaylamhokhau = (Date) sdf.parse(ngaylamhokhauStr);
             String tenchuho = request.get("tenchuho");
             int xemay = Integer.parseInt(request.get("xemay"));
             int oto = Integer.parseInt(request.get("oto"));
@@ -169,6 +168,7 @@ public class totruongController {
     public ResponseEntity<Map<String, Object>> addNhanKhau(@RequestBody Map<String, String> request) {
         Map<String, Object> response = new HashMap<>();
         try{
+            //add bảng nhân khẩu
             String name = request.get("name");
             String dantoc = request.get("dantoc");
             String tongiao = request.get("tongiao");
@@ -180,10 +180,10 @@ public class totruongController {
             boolean gioitinh = Boolean.parseBoolean(request.get("gioitinh"));
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String dobStr = request.get("dob");
-            Date dob = sdf.parse(dobStr); // Chuyển String -> Date
+            Date dob = (Date) sdf.parse(dobStr); // Chuyển String -> Date
 
             String ngaycapStr = request.get("ngaycap");
-            Date ngaycap = sdf.parse(ngaycapStr); // Chuyển String -> Date
+            Date ngaycap = (Date) sdf.parse(ngaycapStr); // Chuyển String -> Date
         boolean add = nkService.addNhanKhau(name,dob,gioitinh,dantoc,tongiao,cccd,ngaycap,noicap,nghenghiep,ghichu,hokhauID);
         if(add){
             response.put("status","success");
@@ -214,10 +214,10 @@ public class totruongController {
             boolean gioitinh = Boolean.parseBoolean(request.get("gioitinh"));
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String dobStr = request.get("dob");
-            Date dob = sdf.parse(dobStr); // Chuyển String -> Date
+            Date dob = (Date) sdf.parse(dobStr); // Chuyển String -> Date
 
             String ngaycapStr = request.get("ngaycap");
-            Date ngaycap = sdf.parse(ngaycapStr); // Chuyển String -> Date
+            Date ngaycap = (Date) sdf.parse(ngaycapStr); // Chuyển String -> Date
             boolean update = nkService.updateNhanKhau(nhankhauID,name,dob,gioitinh,dantoc,tongiao,cccd,ngaycap,noicap,nghenghiep,ghichu,hokhauID);
             if(update){
                 response.put("status","success");
