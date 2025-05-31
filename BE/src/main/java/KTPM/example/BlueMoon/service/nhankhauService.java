@@ -3,15 +3,13 @@ package KTPM.example.BlueMoon.service;
 import KTPM.example.BlueMoon.Iservice.Inhankhau;
 import KTPM.example.BlueMoon.model.Hokhau;
 import KTPM.example.BlueMoon.model.Nhankhau;
+import KTPM.example.BlueMoon.repository.hokhauRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import KTPM.example.BlueMoon.repository.nhankhauRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +17,66 @@ public class nhankhauService implements Inhankhau {
 
     @Autowired
     private nhankhauRepository nhankhauRepository;
+
+    @Autowired
+    private hokhauRepository hokhauRepository;
+
+
+    @Override
+    public boolean addNhanKhau(String name, Date dob, boolean gioitinh, String dantoc, String tongiao, String cccd, Date ngaycap, String noicap, String nghenghiep, String ghichu, int hokhauID) {
+        Hokhau hokhau = hokhauRepository.findByHokhauid(hokhauID);
+        if(hokhau == null){
+            return false;
+        }
+        Nhankhau nhankhau = Nhankhau.builder()
+                .hoten(name)
+                .dantoc(dantoc)
+                .ngaysinh(dob)
+                .ghichu(ghichu)
+                .hokhau(hokhau)
+                .cccd(cccd)
+                .gioitinh(gioitinh)
+                .nghenghiep(nghenghiep)
+                .ngaycap(ngaycap)
+                .noicap(noicap)
+                .tongiao(tongiao)
+                .build();
+        nhankhauRepository.save(nhankhau);
+        return true;
+    }
+
+    @Override
+    public boolean updateNhanKhau(int nhankhauID, String name, Date dob, boolean gioitinh, String dantoc, String tongiao, String cccd, Date ngaycap, String noicap, String nghenghiep, String ghichu, int hokhauID) {
+        Hokhau hokhau = hokhauRepository.findByHokhauid(hokhauID);
+        if(hokhau == null){
+            return false;
+        }
+        Nhankhau nhankhau = nhankhauRepository.findByNhankhauid(nhankhauID);
+        if (nhankhau != null) {
+
+            nhankhau.setHoten(name);
+            nhankhau.setNgaysinh(dob);
+            nhankhau.setGioitinh(gioitinh);
+            nhankhau.setDantoc(dantoc);
+            nhankhau.setTongiao(tongiao);
+            nhankhau.setCccd(cccd);
+            nhankhau.setNgaycap(ngaycap);
+            nhankhau.setNoicap(noicap);
+            nhankhau.setNghenghiep(nghenghiep);
+            nhankhau.setGhichu(ghichu);
+            nhankhau.setHokhau(hokhau);
+
+            nhankhauRepository.save(nhankhau);
+            return true;
+        } else {
+            return false; // Không tìm thấy nhân khẩu
+        }
+    }
+
+    @Override
+    public void deleteNhanKhauID(int nhankhauID) {
+    nhankhauRepository.deleteById(nhankhauID);
+    }
 
     @Override
     public Map<String,Object> getnhankhauBycccd(String cccd) {

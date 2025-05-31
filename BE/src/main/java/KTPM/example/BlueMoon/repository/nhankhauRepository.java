@@ -22,4 +22,6 @@ public interface nhankhauRepository extends JpaRepository<Nhankhau, Integer> {
     Nhankhau findByHokhau_HokhauidAndHoten(int hokhauId, String name);
 
     Nhankhau findByHokhau_HokhauidAndCccdAndHoten(int hokhauId, String cccd, String name);
+
+    Nhankhau findByNhankhauid(int nhankhauid);
 }

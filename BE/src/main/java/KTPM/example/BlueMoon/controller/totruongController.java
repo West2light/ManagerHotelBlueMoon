@@ -164,47 +164,78 @@ public class totruongController {
             return ResponseEntity.status(500).body(response);
         }
     }
-/*
-    @PostMapping("/test-addlichsuthaydoi")
-    public boolean testAddLichSuThayDoi(
-            @RequestParam int loaithaydoi,
-            @RequestParam int hokhauid,
-            @RequestParam String cccd,
-            @RequestParam String qhevschuho
-    ) {
-        return tamtrutamvangService.addlichsuthaydoi(loaithaydoi, hokhauid, cccd, qhevschuho);
+
+    @PostMapping("/addNhanKhau")
+    public ResponseEntity<Map<String, Object>> addNhanKhau(@RequestBody Map<String, String> request) {
+        Map<String, Object> response = new HashMap<>();
+        try{
+            String name = request.get("name");
+            String dantoc = request.get("dantoc");
+            String tongiao = request.get("tongiao");
+            String cccd = request.get("cccd");
+            String noicap = request.get("noicap");
+            String nghenghiep = request.get("nghenghiep");
+            String ghichu = request.get("ghichu");
+            int hokhauID = Integer.parseInt(request.get("hokhauID"));
+            boolean gioitinh = Boolean.parseBoolean(request.get("gioitinh"));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String dobStr = request.get("dob");
+            Date dob = sdf.parse(dobStr); // Chuyển String -> Date
+
+            String ngaycapStr = request.get("ngaycap");
+            Date ngaycap = sdf.parse(ngaycapStr); // Chuyển String -> Date
+        boolean add = nkService.addNhanKhau(name,dob,gioitinh,dantoc,tongiao,cccd,ngaycap,noicap,nghenghiep,ghichu,hokhauID);
+        if(add){
+            response.put("status","success");
+            return ResponseEntity.ok(response);
+        }
+        else {
+            response.put("status","fail");
+            return ResponseEntity.status(400).body(response);
+        }
+        }catch (Exception e){
+            response.put("message", e.getMessage());
+            return ResponseEntity.status(500).body(response);
+        }
+    }
+    @PostMapping("/updateNhanKhau")
+    public ResponseEntity<Map<String, Object>> updateNhanKhau(@RequestBody Map<String, String> request) {
+        Map<String, Object> response = new HashMap<>();
+        try{
+            int nhankhauID = Integer.parseInt(request.get("nhanKhauID"));
+            String name = request.get("name");
+            String dantoc = request.get("dantoc");
+            String tongiao = request.get("tongiao");
+            String cccd = request.get("cccd");
+            String noicap = request.get("noicap");
+            String nghenghiep = request.get("nghenghiep");
+            String ghichu = request.get("ghichu");
+            int hokhauID = Integer.parseInt(request.get("hokhauID"));
+            boolean gioitinh = Boolean.parseBoolean(request.get("gioitinh"));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String dobStr = request.get("dob");
+            Date dob = sdf.parse(dobStr); // Chuyển String -> Date
+
+            String ngaycapStr = request.get("ngaycap");
+            Date ngaycap = sdf.parse(ngaycapStr); // Chuyển String -> Date
+            boolean update = nkService.updateNhanKhau(nhankhauID,name,dob,gioitinh,dantoc,tongiao,cccd,ngaycap,noicap,nghenghiep,ghichu,hokhauID);
+            if(update){
+                response.put("status","success");
+                return ResponseEntity.ok(response);
+            }
+            else {
+                response.put("status","fail");
+                return ResponseEntity.status(400).body(response);
+            }
+        }catch (Exception e){
+            response.put("message", e.getMessage());
+            return ResponseEntity.status(500).body(response);
+        }
+    }
+    @DeleteMapping("/deleteNhanKhau/{nhankhauID}")
+    public String deleteNhanKhau(@PathVariable int nhankhauID) {
+        nkService.deleteNhanKhauID(nhankhauID);
+        return "Delete Success";
     }
 
-    @PostMapping("/test-addtamtrutamvang")
-    public boolean testAddTamTruTamVang(
-            @RequestParam String status,
-            @RequestParam String address,
-            @RequestParam String note,
-            @RequestParam String cccd,
-            @RequestParam int hokhauid
-    ) {
-        return tamtrutamvangService.addtamtrutamvang(status, address, note, cccd, hokhauid);
-    }
-
-    @PostMapping("/update-lichsuthaydoi")
-    public boolean updateLichSuThayDoi(
-            @RequestParam int id,
-            @RequestParam String cccd,
-            @RequestParam(required = false, defaultValue = "0") int loaithaydoi,
-            @RequestParam(required = false) String qhevschuho
-    ) {
-        return tamtrutamvangService.updateLichsuthaydoi(id, loaithaydoi, cccd, qhevschuho);
-    }
-
-    @PostMapping("/update-tamtrutamvang")
-    public boolean updateTamTruTamVang(
-            @RequestParam int id,
-            @RequestParam String cccd,
-            @RequestParam(required = false) String status,
-            @RequestParam(required = false) String address,
-            @RequestParam(required = false) String note
-    ) {
-        return tamtrutamvangService.updateTamtrutamvang(id, status, address, note, cccd);
-    }
-*/
 }
