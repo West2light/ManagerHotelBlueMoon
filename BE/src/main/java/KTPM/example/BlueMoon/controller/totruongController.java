@@ -4,6 +4,7 @@ import KTPM.example.BlueMoon.service.hokhauService;
 import KTPM.example.BlueMoon.service.khoanthuService;
 import KTPM.example.BlueMoon.service.nhankhauService;
 import KTPM.example.BlueMoon.service.payService;
+import KTPM.example.BlueMoon.service.tamtrutamvangService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ public class totruongController {
 
     private final hokhauService hkService;
     private final nhankhauService nkService;
+    private final tamtrutamvangService tamtrutamvangService;
 
     @PostMapping("/addhokhau") //chỉ tổ trưởng
     public ResponseEntity<Map<String, Object>> addhokhau(@RequestBody Map<String, String> request) {
@@ -162,6 +164,7 @@ public class totruongController {
             return ResponseEntity.status(500).body(response);
         }
     }
+
     @PostMapping("/addNhanKhau")
     public ResponseEntity<Map<String, Object>> addNhanKhau(@RequestBody Map<String, String> request) {
         Map<String, Object> response = new HashMap<>();
@@ -234,4 +237,5 @@ public class totruongController {
         nkService.deleteNhanKhauID(nhankhauID);
         return "Delete Success";
     }
+
 }

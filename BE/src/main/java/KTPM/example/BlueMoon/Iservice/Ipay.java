@@ -1,11 +1,9 @@
 package KTPM.example.BlueMoon.Iservice;
 
 import KTPM.example.BlueMoon.model.Khoanthu;
-import KTPM.example.BlueMoon.model.Pay;
 
-import java.util.List;
+import java.util.Date;
 
 public interface Ipay {
-    boolean addpay(int hokhau_id, Khoanthu newkhoanthu, String tenkhoanthu);
-
+    boolean addpay(int nhankhauId, Khoanthu kt, Date ngaythu, String nguoinop, Float soTien);
 }

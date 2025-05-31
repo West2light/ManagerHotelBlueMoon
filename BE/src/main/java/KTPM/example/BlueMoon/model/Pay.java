@@ -6,7 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "nop_tien")
@@ -28,6 +29,6 @@ public class Pay {
     private Nhankhau nhankhau;
 
     private Date ngaythu;
-    private Float tien;
+    private Long tien;
     private String nguoinop;
 }
