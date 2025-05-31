@@ -1,0 +1,66 @@
+UC03	Khách hàng đăng nhập tài khoản được cấp 		
+UC04	Xem thông tin cá nhân		
+{
+""userId"" : 1
+
+}"
+UC06	Gia hạn gói tập 		"Update lại status thành gia hạn đúng memberRegister cũ của Khách
+
+input: customerId và memRegId"	Quản lý gói tập cá nhân	"{
+
+""userId"" : 1
+
+}"
+
+UC07	Theo dõi thời hạn, thông tin gói tập hiện tại 	"Đoạn này xử lý thêm TRƯỜNG HỢP gói tập hết hạn của Khách (Là UC của hệ thống chèn vào đây)
+
+Khi Khách bấm xem thông tin (danh sách) gói tập hiện tại thì hệ thống sẽ kiểm tra thêm thời hạn của gói tập của Khách -> UPDATE lại trong DB status thành đã hết hạn để hiện Option Gia hạn cho Khách thực hiện UC05"	"memberRegister - status:
+1
+Đã đăng ký
+2
+Hết hạn
+3
+Gia hạn
+
+1. 
+(cập nhật sau khi đăng ký thành công gói tập mới do Manager chỉnh hoặc được chấp nhật từ Gia hạn chuyển thành Đã đăng ký cũng do Manager update)
+2. 
+(Hệ thống xử lý tính thời gian so sánh hiện tại với endAt và update thành Hết hạn do Hệ thống làm)
+3.
+(Trạng thái chuyển từ Hết hạn thành Gia hạn do Customer ấn nút Gia hạn)"	Quản lý gói tập cá nhân	"{
+
+""userId"" : 1
+
+}"
+
+UC08	Theo dõi lịch sử tập luyện cùng PT (nếu KHÁCH có PT) 	"(Lịch tập dạng giống lịch)
+
+Lịch tập chỉ cho quan hệ Khách có PT tập riêng cùng
+
+Can them TOKEN checking
+
+Chua co them cung PT ID nen se test api lai sau"	
+"{
+""userId"" : 1
+}"
+
+UC09	Xem thông tin thanh toán các gói tập	"Trong quy trình thanh toán của Khách hàng, Khách sau khi đăng ký gói tập sẽ đến trực tiếp ký hợp đồng tập luyện cùng Manager sau đó thanh toán ở đó NÊN Manager sẽ lưu thông tin thanh toán cho Khách hàng và Khách hàng chỉ việc xem trạng thái thanh toán gói tập và lịch sử thanh toán các gói tập của mình
+
+Check Token với customerID vào đây để chỉ khách hàng với customerid của người đó mới có thể kiếm thông tin thanh toán của customerid mình có
+
+"{
+
+""userId"" : 1
+
+}"
+UC10	Review	Phản hồi của Khách 		
+"Add review:
+{
+
+""userId"" : 1,
+""text"" : ""Phong tap hoi vcl""
+
+}
+
+Xem review cua moi nguoi:
+GET"
