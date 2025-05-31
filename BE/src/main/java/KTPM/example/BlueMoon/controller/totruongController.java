@@ -4,6 +4,7 @@ import KTPM.example.BlueMoon.service.hokhauService;
 import KTPM.example.BlueMoon.service.khoanthuService;
 import KTPM.example.BlueMoon.service.nhankhauService;
 import KTPM.example.BlueMoon.service.payService;
+import KTPM.example.BlueMoon.service.tamtrutamvangService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ public class totruongController {
 
     private final hokhauService hkService;
     private final nhankhauService nkService;
+    private final tamtrutamvangService tamtrutamvangService;
 
     @PostMapping("/addhokhau") //chỉ tổ trưởng
     public ResponseEntity<Map<String, Object>> addhokhau(@RequestBody Map<String, String> request) {
@@ -162,4 +164,47 @@ public class totruongController {
             return ResponseEntity.status(500).body(response);
         }
     }
+/*
+    @PostMapping("/test-addlichsuthaydoi")
+    public boolean testAddLichSuThayDoi(
+            @RequestParam int loaithaydoi,
+            @RequestParam int hokhauid,
+            @RequestParam String cccd,
+            @RequestParam String qhevschuho
+    ) {
+        return tamtrutamvangService.addlichsuthaydoi(loaithaydoi, hokhauid, cccd, qhevschuho);
+    }
+
+    @PostMapping("/test-addtamtrutamvang")
+    public boolean testAddTamTruTamVang(
+            @RequestParam String status,
+            @RequestParam String address,
+            @RequestParam String note,
+            @RequestParam String cccd,
+            @RequestParam int hokhauid
+    ) {
+        return tamtrutamvangService.addtamtrutamvang(status, address, note, cccd, hokhauid);
+    }
+
+    @PostMapping("/update-lichsuthaydoi")
+    public boolean updateLichSuThayDoi(
+            @RequestParam int id,
+            @RequestParam String cccd,
+            @RequestParam(required = false, defaultValue = "0") int loaithaydoi,
+            @RequestParam(required = false) String qhevschuho
+    ) {
+        return tamtrutamvangService.updateLichsuthaydoi(id, loaithaydoi, cccd, qhevschuho);
+    }
+
+    @PostMapping("/update-tamtrutamvang")
+    public boolean updateTamTruTamVang(
+            @RequestParam int id,
+            @RequestParam String cccd,
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String address,
+            @RequestParam(required = false) String note
+    ) {
+        return tamtrutamvangService.updateTamtrutamvang(id, status, address, note, cccd);
+    }
+*/
 }
